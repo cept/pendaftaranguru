@@ -5,43 +5,51 @@
   <div class="card">
     <div class="card-header">
       {{-- <h3 class="card-title">DataTable with default features</h3> --}}
+      @if ($kriteria)
+      <a href="{{ route('kriteria.edit', $kriteria->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+          
+      @else
       <a href="{{ route('kriteria.create') }}" class="btn btn-primary">Tambah Data</a>
+          
+      @endif
     </div>
     <!-- /.card-header -->
     <div class="card-body">
       <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th></th>
-          <th>Bobot Pendidikan</th>
-          <th>Bobot IPK</th>
-          <th>Bobot Pengalaman Kerja</th>
-          <th>Bobot Usia</th>
-          <th>Aksi</th>
+          <th>Kode</th>
+          <th>Kriteria</th>
+          <th>Bobot</th>
+          <th>Type</th>
         </tr>
         </thead>
         <tbody>
-          @foreach ($kriterias as $kriteria)
           <tr>
-            <td></td>
-            <td>{{ $kriteria->pendidikan }}%</td>
+            <td>C1</td>
+            <td>IPK</td>
             <td>{{ $kriteria->ipk }}%</td>
-            <td>{{ $kriteria->pengalaman_kerja }}%</td>
-            <td>{{ $kriteria->usia }}%</td>
-            <td class="text-center">
-              <a href="{{ route('kriteria.edit', $kriteria->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-              
-            </td>
+            <td>Benefit</td>
           </tr>
-          @endforeach
           <tr>
-            <td>Type</td>
+            <td>C2</td>
+            <td>Pengalaman Kerja</td>
+            <td>{{ $kriteria->pengalaman_kerja }}%</td>
             <td>Benefit</td>
-            <td>Benefit</td>
-            <td>Benefit</td>
-            <td>Cost</td>
-            <td></td>
           </tr>
+          <tr>
+            <td>C3</td>
+            <td>Pendidikan Terakhir</td>
+            <td>{{ $kriteria->pendidikan }}%</td>
+            <td>Benefit</td>
+          </tr>
+          <tr>
+            <td>C4</td>
+            <td>Usia</td>
+            <td>{{ $kriteria->usia }}%</td>
+            <td>Cost</td>
+          </tr>
+          
         
         </tbody>
         

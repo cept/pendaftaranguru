@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
+use App\Models\DataPendaftar;
+use App\Models\DokumenPendaftar;
 use App\Models\Kriteria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +21,13 @@ class KriteriaUserController extends Controller
 
     public function store(Request $request)
     {
+        $pendaftar = DataPendaftar::where('id', Auth::id())->first();
+        $dokumen = DokumenPendaftar::where('id_pendaftar', Auth::id())->first();
+
+        if (!$pendaftar || !$dokumen) {
+            return redirect()->route('kriteriauser.index')->withErrors('Anda harus mengisi data pendaftar dan dokumen pendaftar terlebih dahulu.');
+        }
+        
         $messages = [
             'required' => ':attribute wajib diisi',
             'min' => ':attribute minimal :min karakter',

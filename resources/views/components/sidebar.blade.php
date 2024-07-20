@@ -1,4 +1,4 @@
-<aside class="main-sidebar {{ (!Auth::user()->is_admin) ? 'bg-primary sidebar-light-white' : 'sidebar-dark-primary' }} elevation-4" style="{{ (!Auth::user()->is_admin) ? 'background-color: #549ff0 !important;' : '' }}">
+<aside class="main-sidebar {{ (!Auth::user()->is_admin) ? 'bg-success sidebar-light-white' : 'sidebar-dark-primary' }} elevation-4" style="{{ (!Auth::user()->is_admin) ? 'background-color: #34eb74 !important;' : '' }}">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset('/lte/dist/img/logosirmiz.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -9,9 +9,12 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{asset('/lte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-        </div>
+        @if (Auth::user()->is_admin)
+          <div class="image">
+            <img src="{{asset('/lte/dist/img/AdminLTELogo.png')}}" class="img-circle elevation-2" alt="User Image">
+          </div>
+            
+        @endif
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
@@ -49,13 +52,13 @@
               <li class="nav-item">
                 <a href="/datapendaftar" class="nav-link {{ request()->is('datapendaftar*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Pendaftar</p>
+                  <p>Data Pelamar</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/dokumenpendaftar" class="nav-link {{ request()->is('dokumenpendaftar*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dokumen Pendaftar</p>
+                  <p>Dokumen Pelamar</p>
                 </a>
               </li>
             </ul>
@@ -97,7 +100,7 @@
               <li class="nav-item">
                 <a href="/penilaian" class="nav-link {{ request()->is('penilaian*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Penilaian</p>
+                  <p>Perhitungan</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -145,13 +148,13 @@
               <li class="nav-item">
                 <a href="{{ route('formdatapendaftar.index') }}" class="nav-link {{ request()->is('formdatapendaftar*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Form Data Pendaftar</p>
+                  <p>Form Data Pelamar</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('dokumenpendaftaruser.index') }}" class="nav-link {{ request()->is('dokumenpendaftaruser*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dokumen Pendaftar</p>
+                  <p>Dokumen Pelamar</p>
                 </a>
               </li>
             </ul>

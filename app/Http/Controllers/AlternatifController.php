@@ -13,8 +13,29 @@ class AlternatifController extends Controller
     public function index(): View
     {
         $alternatifs = Alternatif::all();
+        $maxPendidikan = $alternatifs->max('pendidikan');
+        $maxIPK = $alternatifs->max('ipk');
+        $maxPengalaman = $alternatifs->max('pengalaman_kerja');
+        $minUsia = $alternatifs->min('usia');
 
-        return view('admin.alternatif.index', compact('alternatifs'));
+        $normalisasis = [];
+        foreach ($alternatifs as $alternatif) {
+            $norPendidikan = ($maxPendidikan != 0) ? $alternatif->pendidikan / $maxPendidikan : 0;
+            $norIPK = ($maxIPK != 0) ? $alternatif->ipk / $maxIPK : 0;
+            $norPengalaman = ($maxPengalaman != 0) ? $alternatif->pengalaman_kerja / $maxPengalaman : 0;
+            $norUsia = ($alternatif->usia != 0) ? $minUsia / $alternatif->usia : 0;
+
+            $normalisasis[] = [
+                'id_pendaftar' => $alternatif->id_pendaftar,
+                'alternatif' => $alternatif,
+                'pendidikan' => $norPendidikan,
+                'ipk' => $norIPK,
+                'pengalaman_kerja' => $norPengalaman,
+                'usia' => $norUsia,
+            ];
+        }
+
+        return view('admin.alternatif.index', compact('alternatifs', 'normalisasis'));
     }
 
     public function create(): View

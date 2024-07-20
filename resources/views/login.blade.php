@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="{{asset('/lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('/lte/dist/css/adminlte.min.css')}}">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="{{asset('/lte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -67,5 +69,25 @@
 <script src="{{asset('/lte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('/lte/dist/js/adminlte.min.js')}}"></script>
+<!-- SweetAlert2 -->
+<script src="{{asset('/lte/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<script>
+  $(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+
+    @if(session('success'))
+          Toast.fire({
+              icon: 'success',
+              title: '{{ session('success') }}'
+          });
+    @endif
+
+  });
+</script>
 </body>
 </html>

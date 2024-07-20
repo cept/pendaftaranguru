@@ -11,8 +11,9 @@ class KriteriaController extends Controller
     //
     public function index(): View
     {
-        $kriterias = Kriteria::all();
-        return view('admin.kriteria.index', compact('kriterias'));
+        $kriteria = Kriteria::all()->first();
+
+        return view('admin.kriteria.index', compact('kriteria'));
     }
 
     public function create(): View

@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('kriterias', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('pendidikan');
-            $table->bigInteger('ipk');
-            $table->bigInteger('pengalaman_kerja');
-            $table->bigInteger('usia');
+            $table->bigInteger('pendidikan')->default(30);
+            $table->bigInteger('ipk')->default(25);
+            $table->bigInteger('pengalaman_kerja')->default(30);
+            $table->bigInteger('usia')->default(15);
             $table->timestamps();
         });
     }

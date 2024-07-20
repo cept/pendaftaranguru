@@ -21,6 +21,12 @@ class DokumenPendaftarUserController extends Controller
 
     public function store(Request $request)
     {
+        $pendaftar = DataPendaftar::where('id', Auth::id())->first();
+
+        if (!$pendaftar) {
+            return redirect()->route('dokumenpendaftaruser.index')->withErrors('Anda harus mengisi data pendaftar terlebih dahulu.');
+        }
+
         $messages = [
             'required' => ':attribute wajib diisi',
             'min' => ':attribute minimal :min karakter',

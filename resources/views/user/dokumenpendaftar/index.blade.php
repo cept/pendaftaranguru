@@ -6,6 +6,16 @@
       <h3 class="card-title">Tambah Dokumen Calon Guru</h3>
     </div>
     <div class="card-body">
+      @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+      @endif
+
         <form action="{{ isset($dokpendaftar) ? route('dokumenpendaftaruser.update', $dokpendaftar->id) : route('dokumenpendaftaruser.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             @if(isset($dokpendaftar))

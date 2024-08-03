@@ -1,6 +1,11 @@
 <x-layout>
     <x-slot:title>{{ $title = 'Data Calon Guru'; }}</x-slot:title>
 
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
   <div class="card">
     <div class="card-header">
@@ -29,6 +34,33 @@
                     <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
                 
                     @error('email')
+                        <div class="text-danger mt-2">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label for="password" class="font-weight-bold">Password</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}">
+                
+                    @error('password')
+                        <div class="text-danger mt-2">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group mb-3">
+                    <label for="password_confirmation" class="font-weight-bold">Konfirmasi Password</label>
+                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="{{ old('password_confirmation') }}">
+                
+                    @error('password_confirmation')
                         <div class="text-danger mt-2">
                             {{ $message }}
                         </div>

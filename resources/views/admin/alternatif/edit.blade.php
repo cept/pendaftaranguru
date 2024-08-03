@@ -34,9 +34,10 @@
                             <select class="form-control" id="ipk" name="ipk" class="@error('ipk') is-invalid @enderror">
                             <option value="" disabled {{ old('ipk') == '' ? 'selected' : '' }}>Pilih IPK</option>
                             <option value="1" {{ old('ipk', $alternatif->ipk) == '1' ? 'selected' : '' }}>< 2.00</option>
-                            <option value="2" {{ old('ipk', $alternatif->ipk) == '2' ? 'selected' : '' }}>> 2.00</option>
-                            <option value="3" {{ old('ipk', $alternatif->ipk) == '3' ? 'selected' : '' }}>> 3.00</option>
-                            <option value="4" {{ old('ipk', $alternatif->ipk) == '4' ? 'selected' : '' }}>> 3.50</option>
+                            <option value="2" {{ old('ipk', $alternatif->ipk) == '2' ? 'selected' : '' }}>> 2.00 - 2.50</option>
+                            <option value="3" {{ old('ipk', $alternatif->ipk) == '3' ? 'selected' : '' }}>> 2.50 - 3.00</option>
+                            <option value="4" {{ old('ipk', $alternatif->ipk) == '4' ? 'selected' : '' }}>> 3.00 - 3.50</option>
+                            <option value="5" {{ old('ipk', $alternatif->ipk) == '5' ? 'selected' : '' }}>> 3.50 - 4.00</option>
                             </select>
                         
                             @error('ipk')
@@ -52,10 +53,11 @@
                             <label for="pengalaman_kerja" class="font-weight-bold">Pengalaman Kerja / C2</label>
                             <select class="form-control" id="pengalaman_kerja" name="pengalaman_kerja" class="@error('pengalaman_kerja') is-invalid @enderror">
                             <option value="" disabled {{ old('pengalaman_kerja') == '' ? 'selected' : '' }}>Pilih Pengalaman Kerja</option>
-                            <option value="1" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '1' ? 'selected' : '' }}>< 5 bulan</option>
-                            <option value="2" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '2' ? 'selected' : '' }}>5 - 11 bulan</option>
-                            <option value="3" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '3' ? 'selected' : '' }}>1 - 2 tahun</option>
-                            <option value="4" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '4' ? 'selected' : '' }}>> 2 tahun</option>
+                            <option value="1" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '1' ? 'selected' : '' }}>< 6 bulan</option>
+                            <option value="2" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '2' ? 'selected' : '' }}>> 6 bulan - 1 tahun</option>
+                            <option value="3" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '3' ? 'selected' : '' }}>> 1 tahun - 2 tahun</option>
+                            <option value="4" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '4' ? 'selected' : '' }}>> 2 tahun - 3 tahun</option>
+                            <option value="5" {{ old('pengalaman_kerja', $alternatif->pengalaman_kerja) == '5' ? 'selected' : '' }}>> 3 tahun</option>
                             </select>
                         
                             @error('pengalaman_kerja')
@@ -75,7 +77,8 @@
                             <option value="1" {{ old('pendidikan', $alternatif->pendidikan) == '1' ? 'selected' : '' }}>SMA/SMK</option>
                             <option value="2" {{ old('pendidikan', $alternatif->pendidikan) == '2' ? 'selected' : '' }}>D3</option>
                             <option value="3" {{ old('pendidikan', $alternatif->pendidikan) == '3' ? 'selected' : '' }}>D4/S1</option>
-                            <option value="4" {{ old('pendidikan', $alternatif->pendidikan) == '4' ? 'selected' : '' }}>S2/S3</option>
+                            <option value="4" {{ old('pendidikan', $alternatif->pendidikan) == '4' ? 'selected' : '' }}>S2</option>
+                            <option value="5" {{ old('pendidikan', $alternatif->pendidikan) == '5' ? 'selected' : '' }}>S3</option>
                             </select>
                         
                             @error('pendidikan')
@@ -91,10 +94,11 @@
                             <label for="usia" class="font-weight-bold">Usia / C4</label>
                             <select class="form-control" id="usia" name="usia" class="@error('usia') is-invalid @enderror">
                             <option value="" disabled {{ old('usia') == '' ? 'selected' : '' }}>Pilih Usia</option>
-                            <option value="1" {{ old('usia', $alternatif->usia) == '1' ? 'selected' : '' }}>< 30 tahun</option>
-                            <option value="2" {{ old('usia', $alternatif->usia) == '2' ? 'selected' : '' }}>30-34 tahun</option>
-                            <option value="3" {{ old('usia', $alternatif->usia) == '3' ? 'selected' : '' }}>35-40 tahun</option>
-                            <option value="4" {{ old('usia', $alternatif->usia) == '4' ? 'selected' : '' }}>> 40 tahun</option>
+                            <option value="1" {{ old('usia', $alternatif->usia) == '1' ? 'selected' : '' }}>< 25 tahun</option>
+                            <option value="2" {{ old('usia', $alternatif->usia) == '2' ? 'selected' : '' }}>> 25-30 tahun</option>
+                            <option value="3" {{ old('usia', $alternatif->usia) == '3' ? 'selected' : '' }}>> 30-35 tahun</option>
+                            <option value="4" {{ old('usia', $alternatif->usia) == '4' ? 'selected' : '' }}>> 35-40 tahun</option>
+                            <option value="5" {{ old('usia', $alternatif->usia) == '5' ? 'selected' : '' }}>> 40 tahun</option>
                             </select>
                         
                             @error('usia')

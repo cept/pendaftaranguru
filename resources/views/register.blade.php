@@ -25,13 +25,13 @@
 
       <form action="{{route('register.store')}}" method="post" enctype="multipart/form-data">
         @csrf
-        @error('name')
+        @error('nama')
             <div class="text-danger mt-2">
                 {{ $message }}
             </div>
         @enderror
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Full name" name="name">
+          <input type="text" class="form-control" placeholder="Full name" name="nama">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>

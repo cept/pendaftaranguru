@@ -31,10 +31,10 @@ class KriteriaController extends Controller
         ];
 
         $validated = $request->validate([
-            'pendidikan' => 'required',
-            'ipk' => 'required',
-            'pengalaman_kerja' => 'required',
-            'usia' => 'required|numeric',
+            'pendidikan' => 'required|max:20',
+            'ipk' => 'required|max:20',
+            'pengalaman_kerja' => 'required|max:20',
+            'usia' => 'required|numeric|max:20',
         ], $messages);
 
         Kriteria::create($validated);
@@ -57,10 +57,10 @@ class KriteriaController extends Controller
         ];
 
         $validated = $request->validate([
-            'pendidikan' => 'required',
-            'ipk' => 'required',
-            'pengalaman_kerja' => 'required',
-            'usia' => 'required|numeric',
+            'pendidikan' => 'required|max:20',
+            'ipk' => 'required|max:20',
+            'pengalaman_kerja' => 'required|max:20',
+            'usia' => 'required|numeric|max:20',
         ], $messages);
 
         $kriteria = Kriteria::findOrFail($id);

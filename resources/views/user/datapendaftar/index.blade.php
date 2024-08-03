@@ -140,7 +140,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">{{ isset($pendaftar) ? 'Perbarui' : 'Tambah' }}</button>
+                <button type="submit" class="btn btn-primary">{{ isset($pendaftar) ? 'Perbarui' : 'Simpan' }}</button>
             </form>
         </div>
     </div>

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('dokumen_pendaftars', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pendaftar');
-            $table->string('ijazah');
-            $table->string('cv');
+            $table->string('ijazah', 50);
+            $table->string('cv', 50);
             $table->timestamps();
             
             // Tambahkan definisi foreign key

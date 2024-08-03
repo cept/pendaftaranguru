@@ -55,10 +55,10 @@ class AlternatifController extends Controller
 
         $validated = $request->validate([
             'id_pendaftar' => 'required|unique:alternatifs',
-            'pendidikan' => 'required',
-            'ipk' => 'required',
-            'usia' => 'required',
-            'pengalaman_kerja' => 'required',
+            'pendidikan' => 'required|max:20',
+            'ipk' => 'required|max:20',
+            'usia' => 'required|max:20',
+            'pengalaman_kerja' => 'required|max:20',
         ], $messages);
 
         $pendaftarExists = DataPendaftar::where('id', $request->id_pendaftar)->exists();
@@ -88,10 +88,10 @@ class AlternatifController extends Controller
         ];
 
         $validated = $request->validate([
-            'pendidikan' => 'required',
-            'ipk' => 'required',
-            'usia' => 'required',
-            'pengalaman_kerja' => 'required',
+            'pendidikan' => 'required|max:20',
+            'ipk' => 'required|max:20',
+            'usia' => 'required|max:20',
+            'pengalaman_kerja' => 'required|max:20',
         ], $messages);
 
         $alternatif = Alternatif::findOrFail($id);

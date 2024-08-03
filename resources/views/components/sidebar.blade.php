@@ -16,7 +16,7 @@
             
         @endif
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+          <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
         </div>
       </div>
 

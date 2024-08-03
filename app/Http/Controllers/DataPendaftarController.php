@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPendaftar;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DataPendaftarController extends Controller
 {
@@ -34,27 +37,67 @@ class DataPendaftarController extends Controller
             'required' => ':attribute wajib diisi',
             'min' => ':attribute minimal :min karakter',
             'max' => ':attribute maximal :max karakter',
+            'unique' => ':attribute sudah digunakan',
+            'confirmed' => ':attribute konfirmasi tidak sesuai',
         ];
 
+        $validatedAkun = $request->validate([
+            'nama' => 'required|min:5|max:50',
+            'email' => 'required|unique:users|email|max:50',
+            'password' => 'required|min:5|confirmed|max:50',
+            'password_confirmation' => 'required|min:5|max:50',
+        ], $messages);
+        
+
         $validated = $request->validate([
-            'nama' => 'required',
-            'tempat_lahir' => 'required',
+            'nama' => 'required|max:50',
+            'tempat_lahir' => 'required|max:30',
             'tgl_lahir' => 'required',
             'agama' => 'required',
-            'alamat' => 'required',
+            'alamat' => 'required|max:50',
             'jenis_kelamin' => 'required',
             'no_hp' => 'required|min:10|max:15',
-            'email' => 'required',
+            'email' => 'required|max:25',
             'foto' => 'required|image|mimes:jpeg,jpg,png|max:2048',
         ], $messages);
 
-        $image = $request->file('foto');
-        $image->storeAs('public/images', $image->hashName());
-        $validated['foto'] = $image->hashName();
+        DB::beginTransaction();
 
-        DataPendaftar::create($validated);
+        try {
+            // Simpan user
+            $user = new User();
+            $user->nama = $validatedAkun['nama'];
+            $user->email = $validatedAkun['email'];
+            $user->password = Hash::make($validatedAkun['password']);
+            $user->save();
 
-        return redirect()->route('datapendaftar.index')->with(['success' => 'Data berhasil disimpan!']);
+            // Simpan foto
+            $image = $request->file('foto');
+            $image->storeAs('public/images', $image->hashName());
+            $validated['foto'] = $image->hashName();
+
+            // Tambahkan user_id ke data pendaftar
+            $validated['user_id'] = $user->id;
+
+            // Simpan data pendaftar
+            DataPendaftar::create($validated);
+
+            DB::commit();
+
+            return redirect()->route('datapendaftar.index')->with('success', 'Data berhasil disimpan!');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Data gagal disimpan: ' . $e->getMessage());
+        }
+
+        // $image = $request->file('foto');
+        // $image->storeAs('public/images', $image->hashName());
+        // $validated['foto'] = $image->hashName();
+
+        // DataPendaftar::create($validated);
+
+        // return redirect()->route('datapendaftar.index')->with(['success' => 'Data berhasil disimpan!']);
     }
 
     public function show(string $id): View
@@ -80,14 +123,14 @@ class DataPendaftarController extends Controller
         ];
 
         $validated = $request->validate([
-            'nama' => 'required',
-            'tempat_lahir' => 'required',
+            'nama' => 'required|max:50',
+            'tempat_lahir' => 'required|max:30',
             'tgl_lahir' => 'required',
             'agama' => 'required',
-            'alamat' => 'required',
+            'alamat' => 'required|max:50',
             'jenis_kelamin' => 'required',
             'no_hp' => 'required|min:10|max:15',
-            'email' => 'required',
+            'email' => 'required|max:25',
         ], $messages);
 
         $dataPendaftar = DataPendaftar::findOrFail($id);

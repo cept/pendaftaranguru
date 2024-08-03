@@ -28,25 +28,25 @@
           <tr>
             <td>C1</td>
             <td>IPK</td>
-            <td>{{ $kriteria->ipk }}%</td>
+            <td>{{ ($kriteria) ? $kriteria->ipk.'%' : '' }}</td>
             <td>Benefit</td>
           </tr>
           <tr>
             <td>C2</td>
             <td>Pengalaman Kerja</td>
-            <td>{{ $kriteria->pengalaman_kerja }}%</td>
+            <td>{{ ($kriteria) ? $kriteria->pengalaman_kerja.'%' : '' }}</td>
             <td>Benefit</td>
           </tr>
           <tr>
             <td>C3</td>
             <td>Pendidikan Terakhir</td>
-            <td>{{ $kriteria->pendidikan }}%</td>
+            <td>{{ ($kriteria) ? $kriteria->pendidikan.'%' : '' }}</td>
             <td>Benefit</td>
           </tr>
           <tr>
             <td>C4</td>
             <td>Usia</td>
-            <td>{{ $kriteria->usia }}%</td>
+            <td>{{ ($kriteria) ? $kriteria->usia.'%' : '' }}</td>
             <td>Cost</td>
           </tr>
           

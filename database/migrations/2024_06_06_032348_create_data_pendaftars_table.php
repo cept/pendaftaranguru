@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('data_pendaftars', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('tempat_lahir');
+            $table->string('nama', 50);
+            $table->string('tempat_lahir', 30);
             $table->date('tgl_lahir');
-            $table->string('agama');
-            $table->string('alamat');
-            $table->string('jenis_kelamin');
-            $table->string('no_hp');
-            $table->string('email');
-            $table->string('foto');
+            $table->enum('agama', ['islam', 'kristen', 'hindu', 'budha', 'khonghucu']);
+            $table->string('alamat', 50);
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->string('no_hp', 20);
+            $table->string('email', 50);
+            $table->string('foto', 50);
             $table->timestamps();
         });
     }

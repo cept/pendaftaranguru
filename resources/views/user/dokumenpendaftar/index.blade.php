@@ -56,7 +56,7 @@
                     @endif
                 </div>
 
-                <button type="submit" class="btn btn-primary">{{ isset($dokpendaftar) ? 'Perbarui' : 'Tambah' }}</button>
+                <button type="submit" class="btn btn-primary">{{ isset($dokpendaftar) ? 'Perbarui' : 'Simpan' }}</button>
             </div>
 
         </form>

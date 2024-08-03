@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('alternatifs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pendaftar');
-            $table->double('pendidikan');
-            $table->double('ipk');
-            $table->double('usia');
-            $table->double('pengalaman_kerja');
+            $table->double('pendidikan', 20);
+            $table->double('ipk', 20);
+            $table->double('usia', 20);
+            $table->double('pengalaman_kerja', 20);
             $table->timestamps();
 
             $table->foreign('id_pendaftar')->references('id')->on('data_pendaftars')->onDelete('cascade');

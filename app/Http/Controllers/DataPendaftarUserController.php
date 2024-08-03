@@ -26,11 +26,11 @@ class DataPendaftarUserController extends Controller
         ];
 
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'tempat_lahir' => 'required|string|max:255',
+            'nama' => 'required|string|max:50',
+            'email' => 'required|string|email|max:25',
+            'tempat_lahir' => 'required|string|max:30',
             'tgl_lahir' => 'required|date',
-            'alamat' => 'required|string|max:255',
+            'alamat' => 'required|string|max:50',
             'no_hp' => 'required|string|max:15',
             'jenis_kelamin' => 'required|string',
             'agama' => 'required|string',
@@ -64,11 +64,11 @@ class DataPendaftarUserController extends Controller
         ];
 
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'tempat_lahir' => 'required|string|max:255',
+            'nama' => 'required|string|max:50',
+            'email' => 'required|string|email|max:25',
+            'tempat_lahir' => 'required|string|max:30',
             'tgl_lahir' => 'required|date',
-            'alamat' => 'required|string|max:255',
+            'alamat' => 'required|string|max:50',
             'no_hp' => 'required|string|max:15',
             'jenis_kelamin' => 'required|string',
             'agama' => 'required|string',

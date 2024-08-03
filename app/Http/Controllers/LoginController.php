@@ -26,15 +26,16 @@ class LoginController extends Controller
         $messages = [
             'required' => ':attribute wajib diisi',
             'min' => ':attribute minimal :min karakter',
+            'max' => ':attribute maksimal :max karakter',
             'unique' => ':attribute sudah digunakan',
             'confirmed' => ':attribute konfirmasi tidak sesuai',
         ];
 
         $validated = $request->validate([
-            'name' => 'required|min:5',
-            'email' => 'required|unique:users|email',
-            'password' => 'required|min:5|confirmed',
-            'password_confirmation' => 'required|min:5',
+            'nama' => 'required|min:5|max:50',
+            'email' => 'required|unique:users|email|max:50',
+            'password' => 'required|min:5|confirmed|max:50',
+            'password_confirmation' => 'required|min:5|max:50',
         ], $messages);
         
 
